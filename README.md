@@ -41,3 +41,19 @@ git clone git@github.com:DC-Jade/c_notebook.git
     -   指令集架构， 硬件无关的机器指令集的集合
 -   地址映射
     -   pmem
+
+## Virtualisation虚拟化
+
+### Abstraction
+
+Abstraction makes it possible to write a large program by dividing it into small and under- standable pieces
+
+- CPU
+- Memory
+- Protection
+- Isolation
+
+## Concurrency并发
+
+## Persistence持久性
+
