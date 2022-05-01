@@ -29,7 +29,7 @@
 git clone git@github.com:DC-Jade/c_notebook.git
 ```
 
-## PA1
+~~## PA1~~
 
 -   [Turing machine, TRM](https://en.wikipedia.org/wiki/Turing_machine)
     -   while (1) { get instruction; run instruction; update instruction; }
@@ -41,6 +41,26 @@ git clone git@github.com:DC-Jade/c_notebook.git
     -   指令集架构， 硬件无关的机器指令集的集合
 -   地址映射
     -   pmem
+
+## Program
+
+- 状态机
+- 状态机模型
+  -   $多元组(PC, R_1, ..., R_n， mermory)$
+  -   [Program counter, PC](https://en.wikipedia.org/wiki/Program_counter)
+  -   $R_i(i = 1, ..., n), register$
+
+```bash
+cd src/
+mgcc hanoi.c  # -g is required for gdb
+gdb ../bin/hanoi
+	layout src
+```
+
+## OS
+
+- 硬件：C程序
+- 应用程序： 系统调用API的集合
 
 ## Virtualisation虚拟化
 
@@ -56,4 +76,17 @@ Abstraction makes it possible to write a large program by dividing it into small
 ## Concurrency并发
 
 ## Persistence持久性
+
+
+
+## Scripts(.sh)
+
+```bash
+mgcc () {
+  arg1=$1;  # .c file
+  arg2=${@:2:10}  # argments
+  # -g - debug information
+  gcc $arg1 -Wall -g $arg2 -o ../bin/${arg1%\.c}
+}
+```
 
