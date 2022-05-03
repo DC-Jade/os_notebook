@@ -1,5 +1,7 @@
 # os_notebook
+
 ## Introduction
+
 - This is a operating system learning notebook
 
 - Ref: \
@@ -42,27 +44,77 @@ git clone git@github.com:DC-Jade/c_notebook.git
 -   地址映射
     -   pmem
 
-## Program
+## Program 程序
 
-- 状态机
-- 状态机模型
-  -   $多元组(PC, R_1, ..., R_n， mermory)$
-  -   [Program counter, PC](https://en.wikipedia.org/wiki/Program_counter)
-  -   $R_i(i = 1, ..., n), register$
+### Intrinsic 本质
+
+1. state machine
+
+   - $tuple(pc, r_1, ..., r_n， mermory)$
+
+   - [program counter, pc](https://en.wikipedia.org/wiki/Program_counter)
+
+   - $r_i(i = 1, ..., n), register$ x86
+
+     ​	rip -> pc ; r[abcd]x ; rbp -> begin ptr of stack ; rsp -> stop ptr of stack, controlling stack
+
+2. computing + syscall
+
+   - computing program
+
+     up to 99%
+
+   - syscall
+
+     store process status and managing process
+
+- function
+
+  - intrinsic
+
+    stack and frame
+
+  - function call
+
+    push frame
+
+  - function return
+
+    pop frame
 
 ```bash
 cd src/
 mgcc hanoi.c  # -g is required for gdb
 gdb ../bin/hanoi
 	layout src
+	wa $rax  # watch point, trace register rax
+
+# min_hello.S
+gcc -c min_hello.S && ld min_hello.o -o ../bin/min_hello
 ```
 
-## OS
+## Compile process 编译过程 
 
-- 硬件：C程序
-- 应用程序： 系统调用API的集合
+.c(src) -> (preprocessing, gcc -I) -> .I -> (compiling, gcc -E) -> .S(assembly code) 
 
-## Virtualisation虚拟化
+-> (assembling, gcc -c) -> linking(ld || gcc -o) -> .o(ELF, object code)
+
+## operating system, OS 操作系统
+
+- ~~硬件：C程序~~
+- ~~应用程序： 系统调用API的集合~~
+
+### Intrinsic
+
+1. machine 
+
+​	C program
+
+2. application program
+
+​	syscall APIs
+
+## Virtualisation 虚拟化
 
 ### Abstraction
 
@@ -73,11 +125,23 @@ Abstraction makes it possible to write a large program by dividing it into small
 - Protection
 - Isolation
 
-## Concurrency并发
+## Concurrency 并发
 
-## Persistence持久性
+- Multiple threads
+- Atomic
+- Plot status machine 
+- 互斥
+
+```bash
+cd ../include
+wget http://jyywiki.cn/pages/OS/2022/demos/thread.h
+cd ../src
+mgcc multi_thread.c -l pthread && ../bin/multi_thread
+```
 
 
+
+## Persistence 持久性
 
 ## Scripts(.sh)
 
