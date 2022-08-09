@@ -20,15 +20,30 @@ void testStrlen() {
 	for (int i = 0; i < strlen(s); ++i) { printf("%c\n", s[i]); }
 }
 
-int main(int argc, char *argv[]) {
-	int *pi = (int *) malloc(10 * sizeof(int));
-	printf("size of pointer to int: %d\n", sizeof(pi));
-	free(pi);
-	int ia[10];
-	printf("size of int array: %d\n", sizeof(ia));
+typedef struct __node_t {
+	int val;
+	struct __node_t *next;
+} node_t;
 
-	testStrlen();
-	testMalloc();
-	free(pi_heap);
+void testStruct() {
+	node_t node1 = { 1, NULL };
+	node_t node2 = { 2, &node1 };
+	node_t node3;
+	printf("node2 val = %d\n", node2.val);
+	printf("node3 val = %d\n", node3.val);
+	printf("node3 next = %p\n", node3.next);
+}
+
+int main(int argc, char *argv[]) {
+	/** int *pi = (int *) malloc(10 * sizeof(int)); */
+	/** printf("size of pointer to int: %d\n", sizeof(pi)); */
+	/** free(pi); */
+	/** int ia[10]; */
+	/** printf("size of int array: %d\n", sizeof(ia)); */
+  /**  */
+	/** testStrlen(); */
+	/** testMalloc(); */
+	/** free(pi_heap); */
+	testStruct();
 	return 0;
 }
