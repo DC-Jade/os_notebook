@@ -1,0 +1,47 @@
+
+;; Function main (main, funcdef_no=0, decl_uid=2979, cgraph_uid=1, symbol_order=0)
+
+(note 1 0 3 NOTE_INSN_DELETED)
+(note 3 1 20 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(insn/f 20 3 21 2 (set (mem:DI (pre_dec:DI (reg/f:DI 7 sp)) [0  S8 A8])
+        (reg/f:DI 6 bp)) "hello.c":6:12 42 {*pushdi2_rex64}
+     (nil))
+(insn/f 21 20 22 2 (set (reg/f:DI 6 bp)
+        (reg/f:DI 7 sp)) "hello.c":6:12 66 {*movdi_internal}
+     (nil))
+(note 22 21 2 2 NOTE_INSN_PROLOGUE_END)
+(note 2 22 5 2 NOTE_INSN_FUNCTION_BEG)
+(insn 5 2 6 2 (set (reg:SI 4 si)
+        (const_int 1 [0x1])) "hello.c":7:2 67 {*movsi_internal}
+     (nil))
+(insn 6 5 7 2 (set (reg:DI 5 di)
+        (const_int 60 [0x3c])) "hello.c":7:2 66 {*movdi_internal}
+     (nil))
+(insn 7 6 8 2 (set (reg:QI 0 ax)
+        (const_int 0 [0])) "hello.c":7:2 69 {*movqi_internal}
+     (nil))
+(call_insn 8 7 9 2 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("syscall") [flags 0x41]  <function_decl 0x7f390d181100 syscall>) [0 syscall S1 A8])
+            (const_int 0 [0]))) "hello.c":7:2 677 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (expr_list (use (reg:QI 0 ax))
+        (expr_list:DI (use (reg:DI 5 di))
+            (expr_list:SI (use (reg:SI 4 si))
+                (nil)))))
+(insn 9 8 17 2 (set (reg:SI 0 ax [orig:82 _3 ] [82])
+        (const_int 0 [0])) "<built-in>":0:0 67 {*movsi_internal}
+     (nil))
+(insn 17 9 23 2 (use (reg/i:SI 0 ax)) "hello.c":8:1 -1
+     (nil))
+(note 23 17 24 2 NOTE_INSN_EPILOGUE_BEG)
+(insn/f 24 23 25 2 (set (reg/f:DI 6 bp)
+        (mem:DI (post_inc:DI (reg/f:DI 7 sp)) [0  S8 A8])) "hello.c":8:1 52 {*popdi1}
+     (expr_list:REG_CFA_DEF_CFA (plus:DI (reg/f:DI 7 sp)
+            (const_int 8 [0x8]))
+        (nil)))
+(jump_insn 25 24 26 2 (simple_return) "hello.c":8:1 690 {simple_return_internal}
+     (nil)
+ -> simple_return)
+(barrier 26 25 19)
+(note 19 26 0 NOTE_INSN_DELETED)

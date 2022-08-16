@@ -51,7 +51,7 @@ int QueueDequeue(queue_t *q, int *value) {
 	return 0;
 }
 
-int QueueTraverse(queue_t *q) {
+void QueueTraverse(queue_t *q) {
 	node_t *tmp;
 	tmp = q->head;
 	while (tmp->next != NULL) {
@@ -61,12 +61,19 @@ int QueueTraverse(queue_t *q) {
 }
 
 void testQueue() {
-	queue_t *q = malloc(sizeof(queue_t));
+	/** queue_t *q = malloc(sizeof(queue_t)); */
 	/** queue_t *q = { NULL }; <] [> NULL pointer exception */
-	QueueInit(q);
-	QueueEnqueue(q, 1);
-	QueueEnqueue(q, 2);
-	QueueTraverse(q);
+	queue_t q;
+	QueueInit(&q);
+	QueueEnqueue(&q, 1);
+	QueueEnqueue(&q, 2);
+	QueueTraverse(&q);
+	int val1, val2;
+	QueueDequeue(&q, &val1);
+	QueueDequeue(&q, &val2);
+	QueueTraverse(&q);
+	printf("val1 = %d\n", val1);
+	printf("val2 = %d\n", val2);
 }
 
 int main() {
