@@ -12,7 +12,10 @@
 
   [南京大学 计算机系统基础](https://nju-projectn.github.io/ics-pa-gitbook/ics2021/index.html)\
 
+	[深入理解计算机系统](https://baike.baidu.com/item/深入理解计算机系统/4542223)\
+
   [Source Code](https://github.com/remzi-arpacidusseau/ostep-code)\
+	
 
 ## Supported
 
