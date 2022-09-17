@@ -2,7 +2,9 @@
 	.text
 	.section	.rodata
 .LC0:
-	.string	"hello wolrd"
+	.string	"hello, jade"
+.LC1:
+	.string	"hello, world"
 	.text
 	.globl	main
 	.type	main, @function
@@ -15,7 +17,11 @@ main:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	movl	$.LC0, %edi
-	call	puts
+	movl	$0, %eax
+	call	printf
+	movl	$.LC1, %edi
+	movl	$0, %eax
+	call	printf
 	movl	$0, %eax
 	popq	%rbp
 	.cfi_def_cfa 7, 8
