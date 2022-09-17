@@ -1,3 +1,5 @@
+[TOC]
+
 # os_notebook
 
 ## Introduction
@@ -124,15 +126,27 @@ gcc -c min_hello.S && ld min_hello.o -o ../bin/min_hello
 Abstraction makes it possible to write a large program by dividing it into small and under- standable pieces
 
 - CPU
-- Memory
+- Virtual Memory
+  - abstraction of main memory
+
+- File
+  - abstraction of I/O devices
+
 - Protection
 - Isolation
 
 ## Concurrency 并发
 
+- Definition
+
+  running  instructs of process/thread  by turns
+
 - Multiple threads
+
 - Atomic
+
 - Plot status machine 
+
 - 互斥
 
 ```bash
@@ -157,3 +171,34 @@ mgcc () {
 }
 ```
 
+## Basics
+
+### Hardware Composite Model
+
+![composite_model](figure/hardware_composite_model.png)
+
+![cache_model](figure/cache_model.png)
+
+- Main memory
+
+  主存是一个临时存储设备，在处理器执行程序时，用来存放程序和程序处理的数据,主存是由一组动态随机存取存储器(DRAM)芯片组成的; 从逻辑上来说，存储 器是一个线性的字节数组，每个字节都有其唯一的地址(数组索引)
+
+- CPU
+
+  中央处理单元(CPU),简称处理器，解释(或执行)存储在主存中二进制指令。主要由ALU （算术逻辑单元）和 PC（程序计数器）
+
+  ALU处理指令，进行状态计算，如；PC是一个大小为一个字的存储设备(或寄存器)，指向主存中的某条机器语言指令(即含有该条指令的地址；
+
+- Memory Hierarchy
+
+  ![memory_hierarchy_model](figure/memory_hierarchy.png)
+
+### Process
+
+![process_virtual_memory_model](figure/process_virtual_memory.png)
+
+### Bit
+
+- Bit，二进制数字
+- Byte，字节；8位bit，最小寻址的内存单位
+- Word，字; 16位bit
