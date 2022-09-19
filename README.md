@@ -141,6 +141,8 @@ Abstraction makes it possible to write a large program by dividing it into small
 
   running  instructs of process/thread  by turns
 
+  Control flow of a process overlaped with others in time
+
 - Multiple threads
 
 - Atomic
@@ -201,4 +203,22 @@ mgcc () {
 
 - Bit，二进制数字
 - Byte，字节；8位bit，最小寻址的内存单位
-- Word，字; 16位bit
+- Word，字; 数据传输单元，和寄存器长度一致
+
+### Exception
+
+1. interruption
+2. trap
+3. falut
+4. Halt
+
+### Parallel
+
+control flow runs in different cpus by concurrency
+
+### Context
+
+all status of a process
+
+
+
