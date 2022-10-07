@@ -6,7 +6,7 @@
 
 - This is a operating system learning notebook
 
-- Ref: \
+- Reference: 
 
   [南京大学-操作系统](https://www.bilibili.com/video/BV1N741177F5?p=3&spm_id_from=pageDriver)\
 
@@ -16,8 +16,9 @@
 
 	[深入理解计算机系统](https://baike.baidu.com/item/深入理解计算机系统/4542223)\
 
-  [Source Code](https://github.com/remzi-arpacidusseau/ostep-code)\
+  [程序员的自我修养](https://book.douban.com/subject/3652388/)\
 	
+	[Source Code](https://github.com/remzi-arpacidusseau/ostep-code)\
 
 ## Supported
 
@@ -51,27 +52,27 @@ git clone git@github.com:DC-Jade/c_notebook.git
 
 ## Program 程序
 
-### Intrinsic 本质
+~~### Intrinsic 本质~~
 
-1. state machine
+### 1. state machine
 
-   - $tuple(pc, r_1, ..., r_n， mermory)$
+- $tuple(pc, r_1, ..., r_n， mermory)$
 
-   - [program counter, pc](https://en.wikipedia.org/wiki/Program_counter)
+- [program counter, pc](https://en.wikipedia.org/wiki/Program_counter)
 
-   - $r_i(i = 1, ..., n), register$ x86
+- $r_i(i = 1, ..., n), register$ x86
 
-     ​	rip -> pc ; r[abcd]x ; rbp -> begin ptr of stack ; rsp -> stop ptr of stack, controlling stack
+  ​	rip -> pc ; r[abcd]x ; rbp -> begin ptr of stack ; rsp -> stop ptr of stack, controlling stack
 
-2. computing + syscall
+### 2. computing + syscall
 
-   - computing program
+- computing program
 
-     up to 99%
+  up to 99%
 
-   - syscall
+- syscall
 
-     store process status and managing process
+  store process status and managing process
 
 - function
 
@@ -98,11 +99,34 @@ gdb ../bin/hanoi
 gcc -c min_hello.S && ld min_hello.o -o ../bin/min_hello
 ```
 
-## Compile process 编译过程 
+## Compile process 编译过程
 
 .c(src) -> (preprocessing, gcc -I) -> .I -> (compiling, gcc -E) -> .S(assembly code) 
 
 -> (assembling, gcc -c) -> linking(ld || gcc -o) -> .o(ELF, object code)
+
+### 1. preprocessing
+
+- Expand #include macro(marked with #)
+
+- rm comments
+- save #pragma compiling instructions, required for compiling(step2)
+
+### 2. compiling
+
+transfer c/c++ code to assembly code, producing assmebly file(.S)
+
+### 3. assembling
+
+transfer assembly code to machine instruction(binary code), producing intermediate object file(.o)
+
+### 4. linking
+
+linking object file, incluing shared object file(.so), producing executable file(a.out)
+
+dereference of symbols in different modules, adjust symbols address in different modules(object file)
+
+<img src="figure/linking_process.jpg" alt="linking_process" style="zoom:50%;" />
 
 ## operating system, OS 操作系统
 
@@ -177,9 +201,9 @@ mgcc () {
 
 ### Hardware Composite Model
 
-![composite_model](figure/hardware_composite_model.png)
+<img src="figure/hardware_composite_model.png" alt="composite_model" style="zoom:50%;" />
 
-![cache_model](figure/cache_model.png)
+<img src="figure/cache_model.png" alt="cache_model" style="zoom:50%;" />
 
 - Main memory
 
@@ -193,11 +217,11 @@ mgcc () {
 
 - Memory Hierarchy
 
-  ![memory_hierarchy_model](figure/memory_hierarchy.png)
+  <img src="figure/memory_hierarchy.png" alt="memory_hierarchy_model" style="zoom:50%;" />
 
 ### Process
 
-![process_virtual_memory_model](figure/process_virtual_memory.png)
+<img src="figure/process_virtual_memory.png" alt="process_virtual_memory_model" style="zoom:50%;" />
 
 ### Bit
 
@@ -220,5 +244,72 @@ control flow runs in different cpus by concurrency
 
 all status of a process
 
+### Reentrant function（可重入函数）
 
+ont type of thread_safe function
+
+- don’t use gloabl or static variables in peer threads
+
+### Symbol
+
+global and static variables and function 
+
+symbol name - name  of globale and static variables and function
+
+### module
+
+one c/cpp file, always **same as an object file**
+
+### ELF(executable linkable format)
+
+- used by obejct file and executable file , relocatable or executable
+
+- three types
+
+  1. relocatable file(.o)
+  2. execuable file(a.out)
+  3. shared object file(.so)
+
+- .bss and .data
+
+  .bss - uninitialized global and static variables, (static int i = 0, seen as unitialized, located at the .bss)
+
+  .bss allocated by the linker, due to weak symbols size is undetermined in compiling process
+
+  .data - initialized global and static variables 
+
+- cmd
+
+  ```bash
+  objdmp -h -s -x .o
+  readelf -h -S -s .o
+  nm .o
+  strip .o # remove symbol info(including debug info)
+  size .o
+  ```
+  
+  
+
+​												<img src="figure/elf_format.jpg" alt="elf_format" style="zoom:50%;" />
+
+### name mangling/decoration
+
+a symbol decoration mechanism in C++, used to void symbol name confict
+
+### Stack model
+
+<img src="figure/stack_model.png" alt="stack_model" style="zoom:50%;" />
+
+## Trick
+
+### swap
+
+```c
+int a = 100, b = 1;
+void swap(int *a, int *b);
+swap(&a, &b);
+void swap(int *a, int *b) {
+  *a ^= *b ^= *a ^= *b;
+}
+```
 
