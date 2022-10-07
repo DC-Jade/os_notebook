@@ -12,7 +12,7 @@
 
   [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/~remzi/OSTEP/)\
 
-  [南京大学 计算机系统基础](https://nju-projectn.github.io/ics-pa-gitbook/ics2021/index.html)\
+  [南京大学 计算机系统基础](http://jyywiki.cn/ICS/2020/)\
 
 	[深入理解计算机系统](https://baike.baidu.com/item/深入理解计算机系统/4542223)\
 
